@@ -1,0 +1,95 @@
+[gd_scene format=3]
+
+[node name="UIJuego" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthP1" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 38.0
+offset_right = 480.0
+offset_bottom = 72.0
+value = 100.0
+show_percentage = false
+
+[node name="Value" type="Label" parent="HealthP1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthP2" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 38.0
+offset_right = 1232.0
+offset_bottom = 72.0
+value = 100.0
+show_percentage = false
+fill_mode = 1
+
+[node name="Value" type="Label" parent="HealthP2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 35.0
+offset_right = 860.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="Announcement" type="Label" parent="."]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 175.0
+offset_right = 1030.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1
+visible = false
+
+[node name="EndPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 380.0
+offset_top = 260.0
+offset_right = 900.0
+offset_bottom = 460.0
+mouse_filter = 0
+
+[node name="Result" type="Label" parent="EndPanel"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 520.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="EndPanel"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 120.0
+offset_right = 395.0
+offset_bottom = 168.0
+text = "Volver al menú"

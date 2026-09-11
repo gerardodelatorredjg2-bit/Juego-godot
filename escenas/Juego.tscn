@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/Juego.gd" id="1_game"]
+[ext_resource type="PackedScene" path="res://escenas/UIJuego.tscn" id="2_hud"]
+
+[sub_resource type="BoxMesh" id="FloorMesh"]
+size = Vector3(24, 0.5, 3)
+
+[sub_resource type="BoxShape3D" id="FloorShape"]
+size = Vector3(24, 0.5, 3)
+
+[sub_resource type="Environment" id="Environment"]
+background_mode = 1
+background_color = Color(0.08, 0.11, 0.19, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.55, 0.62, 0.85, 1)
+ambient_light_energy = 0.65
+
+[sub_resource type="StandardMaterial3D" id="FloorMat"]
+albedo_color = Color(0.18, 0.22, 0.32, 1)
+metallic = 0.2
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="BackdropMesh"]
+size = Vector3(24, 8, 0.25)
+
+[node name="Juego" type="Node3D"]
+script = ExtResource("1_game")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-55, -25, 0)
+light_energy = 1.4
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.96, 0.28, 0, -0.28, 0.96, 0, 4.2, 16)
+current = true
+projection = 1
+size = 15.0
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("FloorMesh")
+material_override = SubResource("FloorMat")
+
+[node name="Collision" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("FloorShape")
+
+[node name="Backdrop" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.5, -1.5)
+mesh = SubResource("BackdropMesh")
+material_override = SubResource("FloorMat")
+
+[node name="Fighters" type="Node3D" parent="."]
+
+[node name="UIJuego" parent="." instance=ExtResource("2_hud")]
+
+[node name="NextRoundTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="DisconnectTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="NextRoundTimer" to="." method="_on_next_round_timer_timeout"]
+[connection signal="timeout" from="DisconnectTimer" to="." method="_on_disconnect_timer_timeout"]
+[connection signal="pressed" from="UIJuego/EndPanel/ReturnButton" to="." method="_on_return_button_pressed"]
