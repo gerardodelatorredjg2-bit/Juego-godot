@@ -1,0 +1,169 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ControlesTactiles.gd" id="1_touch_controls"]
+[ext_resource type="Script" path="res://scripts/TouchActionButton.gd" id="2_touch_button"]
+
+[node name="UIJuego" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthP1" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 38.0
+offset_right = 480.0
+offset_bottom = 72.0
+value = 100.0
+show_percentage = false
+
+[node name="Value" type="Label" parent="HealthP1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthP2" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 38.0
+offset_right = 1232.0
+offset_bottom = 72.0
+value = 100.0
+show_percentage = false
+fill_mode = 1
+
+[node name="Value" type="Label" parent="HealthP2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 35.0
+offset_right = 860.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="Announcement" type="Label" parent="."]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 175.0
+offset_right = 1030.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1
+visible = false
+
+[node name="EndPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 380.0
+offset_top = 260.0
+offset_right = 900.0
+offset_bottom = 460.0
+mouse_filter = 0
+
+[node name="Result" type="Label" parent="EndPanel"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 520.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="EndPanel"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 120.0
+offset_right = 395.0
+offset_bottom = 168.0
+text = "Volver al menú"
+
+
+[node name="TouchControls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_touch_controls")
+
+[node name="Left" type="Button" parent="TouchControls"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 585.0
+offset_right = 148.0
+offset_bottom = 695.0
+theme_override_font_sizes/font_size = 36
+text = "◀"
+modulate = Color(0.45, 0.7, 1, 0.72)
+script = ExtResource("2_touch_button")
+input_action = "move_left"
+
+[node name="Right" type="Button" parent="TouchControls"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 585.0
+offset_right = 270.0
+offset_bottom = 695.0
+theme_override_font_sizes/font_size = 36
+text = "▶"
+modulate = Color(0.45, 0.7, 1, 0.72)
+script = ExtResource("2_touch_button")
+input_action = "move_right"
+
+[node name="Jump" type="Button" parent="TouchControls"]
+layout_mode = 0
+offset_left = 875.0
+offset_top = 560.0
+offset_right = 985.0
+offset_bottom = 670.0
+theme_override_font_sizes/font_size = 18
+text = "SALTAR"
+modulate = Color(0.45, 1, 0.65, 0.72)
+script = ExtResource("2_touch_button")
+input_action = "jump"
+
+[node name="Attack" type="Button" parent="TouchControls"]
+layout_mode = 0
+offset_left = 1110.0
+offset_top = 560.0
+offset_right = 1235.0
+offset_bottom = 670.0
+theme_override_font_sizes/font_size = 18
+text = "ATACAR"
+modulate = Color(1, 0.38, 0.42, 0.78)
+script = ExtResource("2_touch_button")
+input_action = "attack"
+
+[node name="Block" type="Button" parent="TouchControls"]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 585.0
+offset_right = 1102.0
+offset_bottom = 695.0
+theme_override_font_sizes/font_size = 16
+text = "BLOQUEAR"
+modulate = Color(1, 0.78, 0.35, 0.72)
+script = ExtResource("2_touch_button")
+input_action = "block"
